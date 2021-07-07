@@ -36,10 +36,10 @@ use pocketmine\block\Stone;
 use pocketmine\level\biome\Biome;
 use pocketmine\level\ChunkManager;
 use pocketmine\level\format\Chunk;
+use czechpmdevs\multiworld\generator\normal\populator\impl\GroundCoverCustom;
 use pocketmine\level\generator\Generator;
 use pocketmine\level\generator\noise\Simplex;
 use pocketmine\level\generator\object\OreType;
-use pocketmine\level\generator\populator\GroundCover;
 use pocketmine\level\generator\populator\Ore;
 use pocketmine\level\generator\populator\Populator;
 use pocketmine\math\Vector3;
@@ -109,8 +109,10 @@ class NormalGenerator extends Generator {
         $this->noiseBase = new Simplex($this->random, 4, 1 / 4, 1 / 32);
         $this->random->setSeed($this->level->getSeed());
         $this->selector = new BiomeSelector($this->random);
-
-        $cover = new GroundCover();
+        
+        
+        //edit the GroundCover Populator that it be able to generate randomized terrain :) (Could be useful in future)
+        $cover = new GroundCoverCustom();
         $this->generationPopulators[] = $cover;
 
         $ores = new Ore();
